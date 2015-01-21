@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name        = 'commentval'
-  s.version     = '0.1'
+  s.version     = '0.2'
   s.date        = '2015-01-21'
   s.summary     = ""
   s.description = "This gem will check if there the code has sufficient amount of comments. This can be used in tools such as Jenkins to check if the comment meets the expected quantity."
