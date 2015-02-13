@@ -24,7 +24,8 @@ target = ARGV[2].to_f;
 files = Array.new();
 
 code_folders.each do |filename|
-  all_files = Dir[filename + '**/**']
+  all_files = Dir[filename + '**/**/**/**/**/**/**']
+
   all_files.each do |filename|
     if (code_extensions.include? File.extname(filename)) then
       files.push(filename)
@@ -38,9 +39,12 @@ passed = 0;
 files.each do |filename|
   File.open(filename, "r") do |file_handle|
     file_handle.each_line do |file_line|
-      total = total + 1
-      if ((file_line.scan(/#/i).count > 0) || (file_line.scan(/\/\//i).count > 0)) then
-        passed = passed + 1
+      if (file_line.strip != '') then
+        total = total + 1
+        if ((file_line.scan(/#/i).count > 0) || (file_line.scan(/\/\//i).count > 0)) then
+          puts filename + ' - ' + file_line
+          passed = passed + 1
+        end
       end
     end
   end
